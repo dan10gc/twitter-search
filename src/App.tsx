@@ -4,7 +4,7 @@ import "./App.css";
 import { Box, Grommet, TextInput } from "grommet";
 import { SearchBar } from "./components/Searchbar";
 import { Search } from "grommet-icons";
-// import Feed from "./components/Feed";
+import { Feed } from "./components/Feed";
 
 const options = {
   method: "GET",
@@ -73,7 +73,7 @@ function App() {
             onChange={onChange}
           />
         </Box>
-        {/* <Feed /> */}
+        <Feed />
       </Box>
 
       {/* 
