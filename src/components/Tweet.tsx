@@ -15,7 +15,11 @@ const Tweet = ({ tweet, index }: Props) => {
 	const text = tweet.text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
 
 	return (
-		<div className={`box mb-0 px-mobile is-shadowless ${index % 2 !== 0 && `has-background-white-bis`}`}>
+		<div
+			className={`box mb-0 px-mobile is-shadowless is-radiusless ${
+				index % 2 !== 0 && `has-background-white-bis`
+			}`}
+		>
 			<article className="media">
 				<div className="media-left">
 					<figure className="image is-48x48">

@@ -9,11 +9,6 @@ import { FaSearch } from 'react-icons/fa';
 
 function App() {
 	const [value, setValue] = React.useState<string>('');
-	const [suggestionOpen, setSuggestionOpen] = React.useState(false);
-	const [suggestedFolks, setSuggestedFolks] = React.useState([]);
-	const [pagination, setPagination] = React.useState<number>(5);
-
-	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
 
 	const [tweets, setTweets] = React.useState<Array<any>>([]);
 	const [status, setStatus] = React.useState<Status>(Status.IDLE);
@@ -23,10 +18,7 @@ function App() {
 
 	const debouncedSearchTerm = useDebounce(value, 500);
 
-	React.useEffect(() => {
-		// @ts-ignore
-		if (metaData) console.log({ next_results: metaData.next_results });
-	}, [metaData]);
+	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
 
 	const onLoadMore = () => {
 		// @ts-ignore
@@ -98,8 +90,12 @@ function App() {
 					</div>
 					<div className="box is-hidden-tablet px-mobile">
 						<h4 className="title is-size-4">Filter by hashtag</h4>
-						{hashtags.map((hashtag) => (
-							<Hashtag {...{ hashtag }} />
+						{hashtags.map((hashtag, index) => (
+							<Hashtag
+								{...{ hashtag }}
+								onHashtagPress={() => onFilteredSearch(hashtag)}
+								key={hashtag + index}
+							/>
 						))}
 					</div>
 					<Feed {...{ tweets, status, onLoadMore, paginationStatus, metaData }} />
@@ -108,8 +104,12 @@ function App() {
 					<div className="box ">
 						<h1 className="title is-4">Filter by hashtag</h1>
 						<div className="is-flex-direction-row flex-wrap is-justify-content-start">
-							{hashtags.map((hashtag) => (
-								<Hashtag {...{ hashtag }} onHashtagPress={() => onFilteredSearch(hashtag)} />
+							{hashtags.map((hashtag, index) => (
+								<Hashtag
+									{...{ hashtag }}
+									onHashtagPress={() => onFilteredSearch(hashtag)}
+									key={hashtag + index}
+								/>
 							))}
 						</div>
 					</div>
