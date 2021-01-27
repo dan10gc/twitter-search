@@ -23,10 +23,6 @@ function App() {
 
 	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
 
-	React.useEffect(() => {
-		console.log({ paginationStatus });
-	}, [paginationStatus]);
-
 	const onLoadMore = () => {
 		// @ts-ignore
 		if (!metaData.next_results) {
@@ -80,10 +76,10 @@ function App() {
 					dispatch({ type: SearchTypes.STATUS, payload: { status: Status.REJECTED } });
 				});
 		} else {
-			dispatch({
-				type: SearchTypes.ADD_TWEETS,
-				payload: { tweets: [], hashtags: [], metaData: null },
-			});
+			// dispatch({
+			// 	type: SearchTypes.ADD_TWEETS,
+			// 	payload: { tweets: [], hashtags: [], metaData: null },
+			// });
 		}
 	}, [debouncedSearchTerm]);
 	return (

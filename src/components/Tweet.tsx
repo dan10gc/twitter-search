@@ -39,8 +39,8 @@ const Tweet = ({ tweet, index }: Props) => {
 						)}
 					</div>
 					<div className="is-flex-direction-row flex-wrap is-justify-content-start">
-						{hashtags.map((hashtag: string) => (
-							<Hashtag {...{ hashtag }} />
+						{hashtags.map((hashtag: string, index: number) => (
+							<Hashtag {...{ hashtag }} key={hashtag + index} />
 						))}
 					</div>
 				</div>
