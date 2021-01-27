@@ -78,12 +78,12 @@ function App() {
 		}
 	}, [debouncedSearchTerm]);
 	return (
-		<div className="container mt-4">
-			<h1 className="title">Tweet Feed</h1>
+		<div className="container mt-4 py-2">
+			<h1 className="title pl-mobile">Tweet Feed</h1>
 
 			<div className="columns mt-3">
-				<div className="column is-two-thirds">
-					<div className="control has-icons-left mb-4">
+				<div className="column is-two-thirds is-paddingless-mobile">
+					<div className="control has-icons-left mb-4 mx-mobile">
 						<span className="icon is-small is-left py-5">
 							<FaSearch />
 						</span>
@@ -96,8 +96,8 @@ function App() {
 							onChange={onChange}
 						/>
 					</div>
-					<div className="box is-hidden-tablet">
-						<h1 className="title is-4">Filter by hashtag</h1>
+					<div className="box is-hidden-tablet px-mobile">
+						<h4 className="title is-size-4">Filter by hashtag</h4>
 						{hashtags.map((hashtag) => (
 							<Hashtag {...{ hashtag }} />
 						))}
@@ -107,7 +107,7 @@ function App() {
 				<div className="column is-hidden-mobile">
 					<div className="box ">
 						<h1 className="title is-4">Filter by hashtag</h1>
-						<div className="is-flex-direction-row flex-wrap">
+						<div className="is-flex-direction-row flex-wrap is-justify-content-start">
 							{hashtags.map((hashtag) => (
 								<Hashtag {...{ hashtag }} onHashtagPress={() => onFilteredSearch(hashtag)} />
 							))}

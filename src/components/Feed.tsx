@@ -14,7 +14,7 @@ interface Props {
 
 export const Feed = ({ tweets, status, onLoadMore, paginationStatus, metaData }: Props) => {
 	return (
-		<div className="box px-0 mb-5">
+		<div className="box px-0 mb-5 ">
 			{Status.PENDING === status && <Spinner />}
 
 			{tweets.map((tweet, index) => {
@@ -22,7 +22,9 @@ export const Feed = ({ tweets, status, onLoadMore, paginationStatus, metaData }:
 			})}
 			{tweets.length > 0 && (
 				<button
-					className={`button is-ghost is-fullwidth ${Status.PENDING === paginationStatus && `is-loading`}`}
+					className={`button is-ghost mt-4 is-fullwidth ${
+						Status.PENDING === paginationStatus && `is-loading`
+					}`}
 					onClick={onLoadMore}
 				>
 					{/* @ts-ignore */}

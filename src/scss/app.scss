@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
 // Set your brand colors
 $purple: #8a4d76;
@@ -11,7 +11,7 @@ $beige-light: #d0d1cd;
 $beige-lighter: #f8f9f9;
 
 // Update Bulma's global variables
-$family-sans-serif: "Nunito", sans-serif;
+$family-sans-serif: 'Nunito', sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: $purple;
@@ -29,25 +29,53 @@ $input-shadow: none;
 $box-radius: 4px;
 
 // Import only what you need from Bulma
-@import "../../node_modules/bulma/sass/utilities/_all.sass";
-@import "../../node_modules/bulma/sass/base/_all.sass";
-@import "../../node_modules/bulma/sass/elements/_all.sass";
-@import "../../node_modules/bulma/sass/form/_all.sass";
-@import "../../node_modules/bulma/sass/components/_all.sass";
-@import "../../node_modules/bulma/sass/layout/_all.sass";
+@import '../../node_modules/bulma/sass/utilities/_all.sass';
+@import '../../node_modules/bulma/sass/base/_all.sass';
+@import '../../node_modules/bulma/sass/elements/_all.sass';
+@import '../../node_modules/bulma/sass/form/_all.sass';
+@import '../../node_modules/bulma/sass/components/_all.sass';
+@import '../../node_modules/bulma/sass/layout/_all.sass';
 
-@import "../../node_modules/bulma/sass/grid/_all.sass";
-@import "../../node_modules/bulma/sass/helpers/_all.sass";
+@import '../../node_modules/bulma/sass/grid/_all.sass';
+@import '../../node_modules/bulma/sass/helpers/_all.sass';
 
 .badge {
-  //   display: block;
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: 24px;
-  background-color: #e5f2f9;
-  //   width: auto;
-  text-align: center;
-  margin-right: 8px;
-  margin-bottom: 8px;
-  font-weight: 500;
+	display: inline-block;
+	padding: 8px 16px;
+	border-radius: 24px;
+	background-color: #e5f2f9;
+	text-align: center;
+	margin-right: 8px;
+	margin-bottom: 8px;
+	font-weight: 500;
+	font-size: 0.75rem;
+	@media screen and (min-width: $tablet) {
+		font-size: 1rem;
+	}
+}
+
+.is-paddingless-mobile {
+	@media screen and (max-width: $tablet) {
+		padding: 0;
+	}
+}
+
+.mx-mobile {
+	@media screen and (max-width: $tablet) {
+		margin-left: 2rem;
+		margin-right: 2rem;
+	}
+}
+
+.px-mobile {
+	@media screen and (max-width: $tablet) {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
+
+.pl-mobile {
+	@media screen and (max-width: $tablet) {
+		padding-left: 1rem;
+	}
 }

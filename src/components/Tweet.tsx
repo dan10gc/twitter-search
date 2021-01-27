@@ -15,7 +15,7 @@ const Tweet = ({ tweet, index }: Props) => {
 	const text = tweet.text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
 
 	return (
-		<div className={`box mb-0 is-shadowless ${index % 2 !== 0 && `has-background-white-bis`}`}>
+		<div className={`box mb-0 px-mobile is-shadowless ${index % 2 !== 0 && `has-background-white-bis`}`}>
 			<article className="media">
 				<div className="media-left">
 					<figure className="image is-48x48">
@@ -29,12 +29,12 @@ const Tweet = ({ tweet, index }: Props) => {
 						</h5>
 						<p className="mb-1 has-text-weight-medium">{text}</p>
 						{Array.isArray(tweetUrl) && (
-							<a href={tweetUrl[0]} target="blank">
+							<a href={tweetUrl[0]} target="_blank">
 								{tweetUrl[0]}
 							</a>
 						)}
 					</div>
-					<nav className="level is-mobile">
+					<nav className="level is-mobile is-flex-direction-row flex-wrap is-justify-content-start">
 						{hashtags.map((hashtag: string) => (
 							<Hashtag {...{ hashtag }} />
 						))}
