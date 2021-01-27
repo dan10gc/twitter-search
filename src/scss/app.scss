@@ -22,7 +22,7 @@ $fullhd-enabled: false;
 // Update some of Bulma's component variables
 $body-background-color: $beige-lighter;
 $control-border-width: 2px;
-$input-border-color: transparent;
+// $input-border-color: transparent;
 $input-shadow: none;
 // $box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1),
 //   0 0px 0 1px rgba($scheme-invert, 0.02);
@@ -49,4 +49,5 @@ $box-radius: 4px;
   text-align: center;
   margin-right: 8px;
   margin-bottom: 8px;
+  font-weight: 500;
 }

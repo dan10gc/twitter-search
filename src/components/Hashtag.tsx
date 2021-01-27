@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 interface Props {
-  hashtag: string;
+	hashtag: string;
 }
 
 const Hashtag = ({ hashtag }: Props) => {
-  return <a className="badge">#{hashtag}</a>;
+	return <a className="badge">#{hashtag}</a>;
 };
 
 export default Hashtag;

@@ -50,7 +50,8 @@
     "server": "node server/server.ts",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" "
   },
   "eslintConfig": {
     "extends": [

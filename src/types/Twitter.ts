@@ -1,4 +1,4 @@
 export interface HashtagModel {
-    text: string;
-    indices: Array<number>
+	text: string;
+	indices: Array<number>;
 }

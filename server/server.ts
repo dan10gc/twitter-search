@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.get('/tweets', async (req, res) => {
   const { query } = req;
   const q = (typeof query.q == 'string' && query.q.trim().length) ? query.q.trim() : 'science37'
-  const response = await nodefetch(`${TWITTER_SEARCH_URL}?q=${q}&result_type=popular`, {
+  const response = await nodefetch(`${TWITTER_SEARCH_URL}?q=${q}&result_type=popular&count=5`, {
     headers: {
       Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`
     }
