@@ -6,43 +6,57 @@ import { useDebounce } from "../helpers/useDebounce";
 import { searchTweets } from "../services/twitter";
 import { Status } from "../types";
 import { Spinner } from "./Spinner";
+import extractUrls from "extract-urls";
 
 interface Props {
   searchTerm: string;
 }
 
 const Tweet = ({ tweet, index }) => {
+  //   const str = "";
+  const tweetUrl = extractUrls(tweet.text);
+
+  const text = tweet.text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, "");
+  //   console.log(Array.isArray(tweetUrl) ? tweetUrl : "no url");
+
   return (
-    <Box
-      direction="row"
-      align="center"
-      gap="small"
-      //   border={index < tweets.length - 1 ? "bottom" : undefined}
-      pad="small"
-      key={index}
-    >
-      <Image
-        width="48px"
-        //   @ts-ignore
-        src={tweet.user.profile_image_url}
-        style={{ borderRadius: "100%" }}
-      />
-      <Box
-        direction="column"
-        align="start"
-        gap="small"
-        pad="small"
-        key={index}
-        width="large"
-      >
-        <Text>
-          {/* @ts-ignore */}
-          <strong>{`@${tweet.user.name}`}</strong>
-        </Text>
-        {/* @ts-ignore */}
-        <Text>{tweet.text}</Text>
-      </Box>
-    </Box>
+    <div className="box mb-0">
+      <article className="media">
+        <div className="media-left">
+          <figure className="image is-48x48">
+            <img src={tweet.user.profile_image_url} alt="Image" />
+          </figure>
+        </div>
+        <div className="media-content">
+          <div className="content">
+            <h5 className="title is-5 mb-1">
+              <strong>@{tweet.user.name}</strong>
+            </h5>
+            <p className="mb-1">{text}</p>
+            {Array.isArray(tweetUrl) && <a>{tweetUrl[0]}</a>}
+          </div>
+          <nav className="level is-mobile">
+            <div className="level-left">
+              <a className="level-item" aria-label="reply">
+                <span className="icon is-small">
+                  <i className="fas fa-reply" aria-hidden="true"></i>
+                </span>
+              </a>
+              <a className="level-item" aria-label="retweet">
+                <span className="icon is-small">
+                  <i className="fas fa-retweet" aria-hidden="true"></i>
+                </span>
+              </a>
+              <a className="level-item" aria-label="like">
+                <span className="icon is-small">
+                  <i className="fas fa-heart" aria-hidden="true"></i>
+                </span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </article>
+    </div>
   );
 };
 
@@ -73,7 +87,7 @@ export const Feed = (props: Props) => {
 
       {tweets.map((tweet, index) => {
         // @ts-ignore
-        return <Tweet {...{ tweet, index }} />;
+        return <Tweet {...{ tweet, index }} key={tweet.user.name} />;
       })}
     </Box>
   );

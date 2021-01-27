@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import {
   // Box,
@@ -106,23 +106,27 @@ function App() {
     //     </Grid>
     //   </Box>
     // </Grommet>
-    <div className="container">
+    <div className="container mt-4">
       <h1 className="title">Tweet Feed</h1>
-      <input
-        className="input"
-        type="search"
-        placeholder="Search by keyword"
-        value={value}
-        onChange={onChange}
-      />
-      <div className="columns is-two-thirds">
-        <div className="column">
+
+      <div className="mb-4">
+        <input
+          className="input py-1"
+          type="search"
+          placeholder="Search by keyword"
+          value={value}
+          onChange={onChange}
+        />
+      </div>
+
+      <div className="columns mt-3">
+        <div className="column is-two-thirds">
           <Feed searchTerm={value} />
           {/* <h1 className="title">Filter by hashtag</h1> */}
         </div>
         <div className="column">
           <div className="box">
-            <h1 className="title">Filter by hashtag</h1>
+            <h1 className="title is-4">Filter by hashtag</h1>
           </div>
         </div>
       </div>
