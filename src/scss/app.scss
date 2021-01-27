@@ -27,6 +27,7 @@ $input-shadow: none;
 // $box-shadow: 0 0.5em 1em -0.125em rgba($scheme-invert, 0.1),
 //   0 0px 0 1px rgba($scheme-invert, 0.02);
 $box-radius: 4px;
+$button-active-border-color: none;
 
 // Import only what you need from Bulma
 @import '../../node_modules/bulma/sass/utilities/_all.sass';
@@ -78,4 +79,8 @@ $box-radius: 4px;
 	@media screen and (max-width: $tablet) {
 		padding-left: 1rem;
 	}
+}
+
+.tweet-text {
+	word-break: break-all;
 }

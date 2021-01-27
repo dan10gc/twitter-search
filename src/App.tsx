@@ -31,7 +31,7 @@ function App() {
 	const onLoadMore = () => {
 		// @ts-ignore
 		if (!metaData.next_results) {
-			console.log('scroll to top');
+			window.scrollTo({ top: 0, behavior: 'smooth' });
 			return;
 		}
 		setPaginationStatus(Status.PENDING);

@@ -27,7 +27,7 @@ const Tweet = ({ tweet, index }: Props) => {
 						<h5 className="title is-5 mb-2">
 							<strong>@{tweet.user.screen_name}</strong>
 						</h5>
-						<p className="mb-1 has-text-weight-medium">{text}</p>
+						<p className="mb-1 has-text-weight-medium tweet-text">{text}</p>
 						{Array.isArray(tweetUrl) && (
 							<a href={tweetUrl[0]} target="_blank">
 								{tweetUrl[0]}
