@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tweet Component renders tweet with white-bis background-color 1`] = `
+<div>
+  <div
+    class="box mb-0 px-mobile is-shadowless is-radiusless has-background-white-bis"
+  >
+    <article
+      class="media"
+    >
+      <div
+        class="media-left"
+      >
+        <figure
+          class="image is-48x48"
+        >
+          <img
+            alt="user profile"
+            class="is-rounded"
+            src="http://pbs.twimg.com/profile_images/1333096463916797954/7bzarkH2_normal.jpg"
+          />
+        </figure>
+      </div>
+      <div
+        class="media-content"
+      >
+        <div
+          class="content"
+        >
+          <h5
+            class="title is-5 mb-2"
+          >
+            <strong>
+              @
+              FCBarcelona
+            </strong>
+          </h5>
+          <p
+            class="mb-1 has-text-weight-medium tweet-text"
+          >
+            💪 #Messi is back! 🐐 
+          </p>
+          <a
+            href="https://t.co/QyEDYPTNp7"
+            rel="noreferrer"
+            target="_blank"
+          >
+            https://t.co/QyEDYPTNp7
+          </a>
+        </div>
+        <div
+          class="is-flex-direction-row flex-wrap is-justify-content-start"
+        >
+          <div
+            class="badge is-clickable"
+          >
+            <span>
+               #
+              Messi
+            </span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+`;

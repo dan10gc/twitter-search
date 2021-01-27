@@ -1,0 +1,355 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feed Component renders 5 tweets and load more button 1`] = `
+<div>
+  <div
+    class="box px-0 mb-5 "
+  >
+    <div
+      class="box mb-0 px-mobile is-shadowless is-radiusless false"
+    >
+      <article
+        class="media"
+      >
+        <div
+          class="media-left"
+        >
+          <figure
+            class="image is-48x48"
+          >
+            <img
+              alt="user profile"
+              class="is-rounded"
+              src="http://pbs.twimg.com/profile_images/1306259078902165515/NFreUk7w_normal.jpg"
+            />
+          </figure>
+        </div>
+        <div
+          class="media-content"
+        >
+          <div
+            class="content"
+          >
+            <h5
+              class="title is-5 mb-2"
+            >
+              <strong>
+                @
+                goal
+              </strong>
+            </h5>
+            <p
+              class="mb-1 has-text-weight-medium tweet-text"
+            >
+              Eight years ago today, Lionel Messi scored four goals for Barcelona against Osasuna ⚽️⚽️⚽️⚽️ The way he sat down t
+            </p>
+            <a
+              href="https://t.co/z81vXrJZnz"
+              rel="noreferrer"
+              target="_blank"
+            >
+              https://t.co/z81vXrJZnz
+            </a>
+          </div>
+          <div
+            class="is-flex-direction-row flex-wrap is-justify-content-start"
+          />
+        </div>
+      </article>
+    </div>
+    <div
+      class="box mb-0 px-mobile is-shadowless is-radiusless has-background-white-bis"
+    >
+      <article
+        class="media"
+      >
+        <div
+          class="media-left"
+        >
+          <figure
+            class="image is-48x48"
+          >
+            <img
+              alt="user profile"
+              class="is-rounded"
+              src="http://pbs.twimg.com/profile_images/1333096463916797954/7bzarkH2_normal.jpg"
+            />
+          </figure>
+        </div>
+        <div
+          class="media-content"
+        >
+          <div
+            class="content"
+          >
+            <h5
+              class="title is-5 mb-2"
+            >
+              <strong>
+                @
+                FCBarcelona
+              </strong>
+            </h5>
+            <p
+              class="mb-1 has-text-weight-medium tweet-text"
+            >
+              All 👀's on #Messi 
+            </p>
+            <a
+              href="https://t.co/akRMPS8eaw"
+              rel="noreferrer"
+              target="_blank"
+            >
+              https://t.co/akRMPS8eaw
+            </a>
+          </div>
+          <div
+            class="is-flex-direction-row flex-wrap is-justify-content-start"
+          >
+            <div
+              class="badge is-clickable"
+            >
+              <span>
+                 #
+                Messi
+              </span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div
+      class="box mb-0 px-mobile is-shadowless is-radiusless false"
+    >
+      <article
+        class="media"
+      >
+        <div
+          class="media-left"
+        >
+          <figure
+            class="image is-48x48"
+          >
+            <img
+              alt="user profile"
+              class="is-rounded"
+              src="http://pbs.twimg.com/profile_images/1333096463916797954/7bzarkH2_normal.jpg"
+            />
+          </figure>
+        </div>
+        <div
+          class="media-content"
+        >
+          <div
+            class="content"
+          >
+            <h5
+              class="title is-5 mb-2"
+            >
+              <strong>
+                @
+                FCBarcelona
+              </strong>
+            </h5>
+            <p
+              class="mb-1 has-text-weight-medium tweet-text"
+            >
+              💪 #Messi is back! 🐐 
+            </p>
+            <a
+              href="https://t.co/QyEDYPTNp7"
+              rel="noreferrer"
+              target="_blank"
+            >
+              https://t.co/QyEDYPTNp7
+            </a>
+          </div>
+          <div
+            class="is-flex-direction-row flex-wrap is-justify-content-start"
+          >
+            <div
+              class="badge is-clickable"
+            >
+              <span>
+                 #
+                Messi
+              </span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div
+      class="box mb-0 px-mobile is-shadowless is-radiusless has-background-white-bis"
+    >
+      <article
+        class="media"
+      >
+        <div
+          class="media-left"
+        >
+          <figure
+            class="image is-48x48"
+          >
+            <img
+              alt="user profile"
+              class="is-rounded"
+              src="http://pbs.twimg.com/profile_images/1265929170913296385/I54xoXdG_normal.jpg"
+            />
+          </figure>
+        </div>
+        <div
+          class="media-content"
+        >
+          <div
+            class="content"
+          >
+            <h5
+              class="title is-5 mb-2"
+            >
+              <strong>
+                @
+                brfootball
+              </strong>
+            </h5>
+            <p
+              class="mb-1 has-text-weight-medium tweet-text"
+            >
+              Kauan Basile is eight years old. He's just signed an apparel deal with Nike (which is younger than Neymar and Messi… 
+            </p>
+            <a
+              href="https://t.co/uknJXTrtHr"
+              rel="noreferrer"
+              target="_blank"
+            >
+              https://t.co/uknJXTrtHr
+            </a>
+          </div>
+          <div
+            class="is-flex-direction-row flex-wrap is-justify-content-start"
+          />
+        </div>
+      </article>
+    </div>
+    <div
+      class="box mb-0 px-mobile is-shadowless is-radiusless false"
+    >
+      <article
+        class="media"
+      >
+        <div
+          class="media-left"
+        >
+          <figure
+            class="image is-48x48"
+          >
+            <img
+              alt="user profile"
+              class="is-rounded"
+              src="http://pbs.twimg.com/profile_images/1020650459349110784/EFuffquU_normal.jpg"
+            />
+          </figure>
+        </div>
+        <div
+          class="media-content"
+        >
+          <div
+            class="content"
+          >
+            <h5
+              class="title is-5 mb-2"
+            >
+              <strong>
+                @
+                WhoScored
+              </strong>
+            </h5>
+            <p
+              class="mb-1 has-text-weight-medium tweet-text"
+            >
+              📈 Top rated players in Europe's top 5 leagues in 2021 (3+ apps): 1️⃣ L. Messi - 8.80 2️⃣ H. Kane - 8.46 3️⃣ J. San… 
+            </p>
+            <a
+              href="https://t.co/nbkMTU0ipT"
+              rel="noreferrer"
+              target="_blank"
+            >
+              https://t.co/nbkMTU0ipT
+            </a>
+          </div>
+          <div
+            class="is-flex-direction-row flex-wrap is-justify-content-start"
+          />
+        </div>
+      </article>
+    </div>
+    <button
+      class="button is-ghost mt-4 is-fullwidth false"
+    >
+      Load more
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Feed Component renders idleMessage 1`] = `
+<div>
+  <div
+    class="box px-0 mb-5 "
+  >
+    <div
+      class="content py-4"
+    >
+      <figure
+        class="image is-400x400"
+      >
+        <img
+          alt="analytics"
+          src="https://ik.imagekit.io/tb8dhpn3xiv/graphs_statistics_outline_II_q-M4DXaqR.png"
+        />
+      </figure>
+      <div
+        class="px-5"
+      >
+        <h1>
+          Start your search
+        </h1>
+        <p>
+          Search Twitter for keywords and monitor trends and hashtags in your industry.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Feed Component renders noResultsMessage 1`] = `
+<div>
+  <div
+    class="box px-0 mb-5 "
+  >
+    <div
+      class="content py-4"
+    >
+      <figure
+        class="image is-400x400"
+      >
+        <img
+          alt="search"
+          src="https://ik.imagekit.io/tb8dhpn3xiv/search_outline_II_gW4C46dD5.png"
+        />
+      </figure>
+      <div
+        class="px-5"
+      >
+        <h1>
+          No results
+        </h1>
+        <p>
+          The term you entered did not bring up any results, you may have mistyped your term.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
