@@ -4,21 +4,28 @@ import { Feed } from './components/Feed';
 import Hashtag from './components/Hashtag';
 import { useDebounce } from './helpers/useDebounce';
 import { searchTweets } from './services/twitter';
-import { HashtagModel, MetaDataModel, Status } from './types';
+import { HashtagModel, Status } from './types';
 import { FaSearch } from 'react-icons/fa';
+import { searchReducer, SearchTypes } from './reducers/searchReducer';
 
 function App() {
+	const initialState = {
+		tweets: [],
+		hashtags: [],
+		metaData: null,
+		status: Status.IDLE,
+		paginationStatus: Status.IDLE,
+	};
+	const [state, dispatch] = React.useReducer(searchReducer, initialState);
+	const { tweets, status, hashtags, metaData, paginationStatus } = state;
 	const [value, setValue] = React.useState<string>('');
-
-	const [tweets, setTweets] = React.useState<Array<any>>([]);
-	const [status, setStatus] = React.useState<Status>(Status.IDLE);
-	const [hashtags, setHashtags] = React.useState<Array<string>>([]);
-	const [metaData, setMetaData] = React.useState<MetaDataModel | null>(null);
-	const [paginationStatus, setPaginationStatus] = React.useState<Status>(Status.IDLE);
-
 	const debouncedSearchTerm = useDebounce(value, 500);
 
 	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
+
+	React.useEffect(() => {
+		console.log({ paginationStatus });
+	}, [paginationStatus]);
 
 	const onLoadMore = () => {
 		// @ts-ignore
@@ -26,23 +33,26 @@ function App() {
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 			return;
 		}
-		setPaginationStatus(Status.PENDING);
+
+		dispatch({ type: SearchTypes.PAGINATION_STATUS, payload: { paginationStatus: Status.PENDING } });
 		// @ts-ignore
 		searchTweets(metaData.next_results)
 			.then((results) => {
 				const statuses = results.statuses.map((result: any) => result);
-				setPaginationStatus(Status.RESOLVED);
 
 				const hashtags: Array<string> = statuses
 					.flatMap((result: any) => result.entities.hashtags)
 					.map((hashtag: HashtagModel) => hashtag.text);
-				// console.log(JSON.stringify(results, null, 4));
 
-				setTweets((prevState) => [...prevState, ...statuses]);
-				setMetaData(results.search_metadata);
-				setHashtags((prevState) => [...prevState, ...hashtags]);
+				dispatch({
+					type: SearchTypes.PAGINATION,
+					payload: { tweets: statuses, hashtags, metaData: results.search_metadata },
+				});
 			})
-			.catch((err) => console.warn(err));
+			.catch((err) => {
+				console.warn(err);
+				dispatch({ type: SearchTypes.PAGINATION_STATUS, payload: { paginationStatus: Status.REJECTED } });
+			});
 	};
 
 	const onFilteredSearch = (hashtag: string) => {
@@ -51,26 +61,29 @@ function App() {
 
 	React.useEffect(() => {
 		if (debouncedSearchTerm) {
-			setStatus(Status.PENDING);
+			dispatch({ type: SearchTypes.STATUS, payload: { status: Status.PENDING } });
+
 			searchTweets(`?q=${debouncedSearchTerm}&result_type=popular&count=5`)
 				.then((results) => {
 					const statuses = results.statuses.map((result: any) => result);
-					setStatus(Status.RESOLVED);
-					// console.log(results, statuses);
-
 					const hashtags: Array<string> = statuses
 						.flatMap((result: any) => result.entities.hashtags)
 						.map((hashtag: HashtagModel) => hashtag.text);
-					// console.log(JSON.stringify(results, null, 4));
 
-					setTweets(statuses);
-					setMetaData(results.search_metadata);
-
-					setHashtags(hashtags);
+					dispatch({
+						type: SearchTypes.ADD_TWEETS,
+						payload: { tweets: statuses, hashtags, metaData: results.search_metadata },
+					});
 				})
-				.catch((err) => console.warn(err));
+				.catch((err) => {
+					console.warn(err);
+					dispatch({ type: SearchTypes.STATUS, payload: { status: Status.REJECTED } });
+				});
 		} else {
-			setTweets([]);
+			dispatch({
+				type: SearchTypes.ADD_TWEETS,
+				payload: { tweets: [], hashtags: [], metaData: null },
+			});
 		}
 	}, [debouncedSearchTerm]);
 	return (
