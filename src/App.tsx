@@ -19,6 +19,7 @@ function App() {
 	const [status, setStatus] = React.useState<Status>(Status.IDLE);
 	const [hashtags, setHashtags] = React.useState<Array<string>>([]);
 	const [metaData, setMetaData] = React.useState<MetaDataModel | null>(null);
+	const [paginationStatus, setPaginationStatus] = React.useState<Status>(Status.IDLE);
 
 	const debouncedSearchTerm = useDebounce(value, 500);
 
@@ -31,12 +32,13 @@ function App() {
 		// @ts-ignore
 		if (!metaData.next_results) {
 			console.log('scroll to top');
+			return;
 		}
-
+		setPaginationStatus(Status.PENDING);
 		// @ts-ignore
 		searchTweets(metaData.next_results).then((results) => {
 			const statuses = results.statuses.map((result: any) => result);
-			setStatus(Status.RESOLVED);
+			setPaginationStatus(Status.RESOLVED);
 
 			const hashtags: Array<string> = statuses
 				.flatMap((result: any) => result.entities.hashtags)
@@ -47,6 +49,10 @@ function App() {
 			setMetaData(results.search_metadata);
 			setHashtags((prevState) => [...prevState, ...hashtags]);
 		});
+	};
+
+	const onFilteredSearch = (hashtag: string) => {
+		setValue((prevState) => `${prevState} #${hashtag}`);
 	};
 
 	React.useEffect(() => {
@@ -96,14 +102,14 @@ function App() {
 							<Hashtag {...{ hashtag }} />
 						))}
 					</div>
-					<Feed {...{ tweets, status, onLoadMore }} />
+					<Feed {...{ tweets, status, onLoadMore, paginationStatus, metaData }} />
 				</div>
 				<div className="column is-hidden-mobile">
 					<div className="box ">
 						<h1 className="title is-4">Filter by hashtag</h1>
 						<div className="is-flex-direction-row flex-wrap">
 							{hashtags.map((hashtag) => (
-								<Hashtag {...{ hashtag }} />
+								<Hashtag {...{ hashtag }} onHashtagPress={() => onFilteredSearch(hashtag)} />
 							))}
 						</div>
 					</div>
