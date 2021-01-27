@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { MetaDataModel, Status } from '../types';
 import { Spinner } from './Spinner';
 import Tweet from './Tweet';
@@ -18,7 +17,10 @@ export const Feed = ({ tweets, status, onLoadMore, paginationStatus, metaData }:
 			return (
 				<div className="content py-4">
 					<figure className="image is-400x400">
-						<img src="https://ik.imagekit.io/tb8dhpn3xiv/graphs_statistics_outline_II_q-M4DXaqR.png" />
+						<img
+							src="https://ik.imagekit.io/tb8dhpn3xiv/graphs_statistics_outline_II_q-M4DXaqR.png"
+							alt="analytics"
+						/>
 					</figure>
 					<div className="px-5">
 						<h1>Start your search</h1>
@@ -33,7 +35,7 @@ export const Feed = ({ tweets, status, onLoadMore, paginationStatus, metaData }:
 			return (
 				<div className="content py-4">
 					<figure className="image is-400x400">
-						<img src="https://ik.imagekit.io/tb8dhpn3xiv/search_outline_II_gW4C46dD5.png" />
+						<img src="https://ik.imagekit.io/tb8dhpn3xiv/search_outline_II_gW4C46dD5.png" alt="search" />
 					</figure>
 					<div className="px-5">
 						<h1>No results</h1>

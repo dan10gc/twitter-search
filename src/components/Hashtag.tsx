@@ -7,9 +7,9 @@ interface Props {
 
 const Hashtag = ({ hashtag, onHashtagPress }: Props) => {
 	return (
-		<a className="badge" onClick={onHashtagPress}>
-			#{hashtag}
-		</a>
+		<div className="badge is-clickable" onClick={onHashtagPress}>
+			<span> #{hashtag}</span>
+		</div>
 	);
 };
 

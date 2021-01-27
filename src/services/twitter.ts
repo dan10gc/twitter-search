@@ -1,4 +1,4 @@
-import config from '../config/config';
+import { config } from '../config/config';
 
 export const searchTweets = (search: string) => {
     return fetch(`${config.API_URL}tweets${search}`)

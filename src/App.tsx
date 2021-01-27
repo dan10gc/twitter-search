@@ -1,8 +1,8 @@
 import React from 'react';
+import './scss/app.scss';
 import { Feed } from './components/Feed';
 import Hashtag from './components/Hashtag';
 import { useDebounce } from './helpers/useDebounce';
-import './scss/app.scss';
 import { searchTweets } from './services/twitter';
 import { HashtagModel, MetaDataModel, Status } from './types';
 import { FaSearch } from 'react-icons/fa';

@@ -50,8 +50,13 @@ $button-active-border-color: none;
 	margin-bottom: 8px;
 	font-weight: 500;
 	font-size: 0.75rem;
+	color: hsl(217, 71%, 53%);
 	@media screen and (min-width: $tablet) {
 		font-size: 1rem;
+	}
+	&:hover {
+		color: hsl(217, 71%, 45%);
+		background-color: hsl(219, 70%, 96%);
 	}
 }
 

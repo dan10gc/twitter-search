@@ -15,14 +15,9 @@ app.get('/', (req, res) => {
   res.json({ message: `It's alive!` })
 })
 
-// TODO: CHECK DEFAULT VALUE
 app.get('/tweets', async (req, res) => {
   const { query } = req;
   const queryString = Object.keys(query).map(key => key + '=' + query[key]).join('&');
-  console.log({ queryString })
-
-  // const q = (typeof query.q == 'string' && query.q.trim().length) ? query.q.trim() : 'science37'
-  // `${TWITTER_SEARCH_URL}?q=${q}&result_type=popular&count=5`
   const response = await nodefetch(`${TWITTER_SEARCH_URL}?${queryString}`, {
     headers: {
       Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`

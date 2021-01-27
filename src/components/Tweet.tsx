@@ -23,7 +23,7 @@ const Tweet = ({ tweet, index }: Props) => {
 			<article className="media">
 				<div className="media-left">
 					<figure className="image is-48x48">
-						<img className="is-rounded" src={tweet.user.profile_image_url} alt="Image" />
+						<img className="is-rounded" src={tweet.user.profile_image_url} alt="user profile" />
 					</figure>
 				</div>
 				<div className="media-content">
@@ -33,7 +33,7 @@ const Tweet = ({ tweet, index }: Props) => {
 						</h5>
 						<p className="mb-1 has-text-weight-medium tweet-text">{text}</p>
 						{Array.isArray(tweetUrl) && (
-							<a href={tweetUrl[0]} target="_blank">
+							<a href={tweetUrl[0]} target="_blank" rel="noreferrer">
 								{tweetUrl[0]}
 							</a>
 						)}

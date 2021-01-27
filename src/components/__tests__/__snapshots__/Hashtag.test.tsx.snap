@@ -2,11 +2,13 @@
 
 exports[`Hashtag Component renders hashtag 1`] = `
 <div>
-  <a
-    class="badge"
+  <div
+    class="badge is-clickable"
   >
-    #
-    reactjs
-  </a>
+    <span>
+       #
+      reactjs
+    </span>
+  </div>
 </div>
 `;
