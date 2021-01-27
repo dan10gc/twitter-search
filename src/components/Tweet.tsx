@@ -38,11 +38,11 @@ const Tweet = ({ tweet, index }: Props) => {
 							</a>
 						)}
 					</div>
-					<nav className="level is-mobile is-flex-direction-row flex-wrap is-justify-content-start">
+					<div className="is-flex-direction-row flex-wrap is-justify-content-start">
 						{hashtags.map((hashtag: string) => (
 							<Hashtag {...{ hashtag }} />
 						))}
-					</nav>
+					</div>
 				</div>
 			</article>
 		</div>

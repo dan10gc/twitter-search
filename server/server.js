@@ -5,7 +5,7 @@ const cors = require('cors');
 const nodefetch = require('node-fetch')
 
 const app = express();
-
+const port = process.env.PORT || 5000;
 const TWITTER_SEARCH_URL = `https://api.twitter.com/1.1/search/tweets.json`
 
 app.use(morgan('common'));
@@ -27,6 +27,18 @@ app.get('/tweets', async (req, res) => {
   res.json(json)
 })
 
-const port = process.env.PORT || 5000;
+function notFound(req,res,next){
+  res.status(404);
+  const error = new Error('Not Found');
+  next(error)
+}
+
+function errorHandler(error, req,res,next){
+  res.status(res.statusCode || 500);
+  res.json({message: error.message})
+}
+
+app.use(notFound);
+app.use(errorHandler)
 
 app.listen(port, () => { console.log(`Listening on port ${port} 🚀 `) })
