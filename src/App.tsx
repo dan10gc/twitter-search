@@ -28,19 +28,21 @@ function App() {
 		}
 		setPaginationStatus(Status.PENDING);
 		// @ts-ignore
-		searchTweets(metaData.next_results).then((results) => {
-			const statuses = results.statuses.map((result: any) => result);
-			setPaginationStatus(Status.RESOLVED);
+		searchTweets(metaData.next_results)
+			.then((results) => {
+				const statuses = results.statuses.map((result: any) => result);
+				setPaginationStatus(Status.RESOLVED);
 
-			const hashtags: Array<string> = statuses
-				.flatMap((result: any) => result.entities.hashtags)
-				.map((hashtag: HashtagModel) => hashtag.text);
-			// console.log(JSON.stringify(results, null, 4));
+				const hashtags: Array<string> = statuses
+					.flatMap((result: any) => result.entities.hashtags)
+					.map((hashtag: HashtagModel) => hashtag.text);
+				// console.log(JSON.stringify(results, null, 4));
 
-			setTweets((prevState) => [...prevState, ...statuses]);
-			setMetaData(results.search_metadata);
-			setHashtags((prevState) => [...prevState, ...hashtags]);
-		});
+				setTweets((prevState) => [...prevState, ...statuses]);
+				setMetaData(results.search_metadata);
+				setHashtags((prevState) => [...prevState, ...hashtags]);
+			})
+			.catch((err) => console.warn(err));
 	};
 
 	const onFilteredSearch = (hashtag: string) => {
@@ -50,21 +52,23 @@ function App() {
 	React.useEffect(() => {
 		if (debouncedSearchTerm) {
 			setStatus(Status.PENDING);
-			searchTweets(`?q=${debouncedSearchTerm}&result_type=popular&count=5`).then((results) => {
-				const statuses = results.statuses.map((result: any) => result);
-				setStatus(Status.RESOLVED);
-				// console.log(results, statuses);
+			searchTweets(`?q=${debouncedSearchTerm}&result_type=popular&count=5`)
+				.then((results) => {
+					const statuses = results.statuses.map((result: any) => result);
+					setStatus(Status.RESOLVED);
+					// console.log(results, statuses);
 
-				const hashtags: Array<string> = statuses
-					.flatMap((result: any) => result.entities.hashtags)
-					.map((hashtag: HashtagModel) => hashtag.text);
-				// console.log(JSON.stringify(results, null, 4));
+					const hashtags: Array<string> = statuses
+						.flatMap((result: any) => result.entities.hashtags)
+						.map((hashtag: HashtagModel) => hashtag.text);
+					// console.log(JSON.stringify(results, null, 4));
 
-				setTweets(statuses);
-				setMetaData(results.search_metadata);
+					setTweets(statuses);
+					setMetaData(results.search_metadata);
 
-				setHashtags(hashtags);
-			});
+					setHashtags(hashtags);
+				})
+				.catch((err) => console.warn(err));
 		} else {
 			setTweets([]);
 		}

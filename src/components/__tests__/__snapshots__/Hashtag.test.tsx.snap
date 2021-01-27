@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hashtag Component renders hashtag 1`] = `
+<div>
+  <a
+    class="badge"
+  >
+    #
+    reactjs
+  </a>
+</div>
+`;
