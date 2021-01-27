@@ -12,7 +12,6 @@ interface Props {
 const Tweet = ({ tweet, index }: Props) => {
 	const tweetUrl = extractUrls(tweet.text);
 	const hashtags: Array<string> = tweet.entities.hashtags.map((hashtag: HashtagModel) => hashtag.text);
-
 	const text = tweet.text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
 
 	return (
@@ -39,23 +38,6 @@ const Tweet = ({ tweet, index }: Props) => {
 						{hashtags.map((hashtag: string) => (
 							<Hashtag {...{ hashtag }} />
 						))}
-						<div className="level-left">
-							<a className="level-item" aria-label="reply">
-								<span className="icon is-small">
-									<i className="fas fa-reply" aria-hidden="true"></i>
-								</span>
-							</a>
-							<a className="level-item" aria-label="retweet">
-								<span className="icon is-small">
-									<i className="fas fa-retweet" aria-hidden="true"></i>
-								</span>
-							</a>
-							<a className="level-item" aria-label="like">
-								<span className="icon is-small">
-									<i className="fas fa-heart" aria-hidden="true"></i>
-								</span>
-							</a>
-						</div>
 					</nav>
 				</div>
 			</article>

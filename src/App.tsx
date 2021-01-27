@@ -4,33 +4,67 @@ import Hashtag from './components/Hashtag';
 import { useDebounce } from './helpers/useDebounce';
 import './scss/app.scss';
 import { searchTweets } from './services/twitter';
-import { HashtagModel, Status } from './types';
+import { HashtagModel, MetaDataModel, Status } from './types';
 import { FaSearch } from 'react-icons/fa';
 
 function App() {
 	const [value, setValue] = React.useState<string>('');
 	const [suggestionOpen, setSuggestionOpen] = React.useState(false);
 	const [suggestedFolks, setSuggestedFolks] = React.useState([]);
+	const [pagination, setPagination] = React.useState<number>(5);
 
 	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value);
 
-	const [tweets, setTweets] = React.useState([]);
+	const [tweets, setTweets] = React.useState<Array<any>>([]);
 	const [status, setStatus] = React.useState<Status>(Status.IDLE);
 	const [hashtags, setHashtags] = React.useState<Array<string>>([]);
+	const [metaData, setMetaData] = React.useState<MetaDataModel | null>(null);
 
 	const debouncedSearchTerm = useDebounce(value, 500);
 
 	React.useEffect(() => {
+		// @ts-ignore
+		if (metaData) console.log({ next_results: metaData.next_results });
+	}, [metaData]);
+
+	const onLoadMore = () => {
+		// @ts-ignore
+		if (!metaData.next_results) {
+			console.log('scroll to top');
+		}
+
+		// @ts-ignore
+		searchTweets(metaData.next_results).then((results) => {
+			const statuses = results.statuses.map((result: any) => result);
+			setStatus(Status.RESOLVED);
+
+			const hashtags: Array<string> = statuses
+				.flatMap((result: any) => result.entities.hashtags)
+				.map((hashtag: HashtagModel) => hashtag.text);
+			// console.log(JSON.stringify(results, null, 4));
+
+			setTweets((prevState) => [...prevState, ...statuses]);
+			setMetaData(results.search_metadata);
+			setHashtags((prevState) => [...prevState, ...hashtags]);
+		});
+	};
+
+	React.useEffect(() => {
 		if (debouncedSearchTerm) {
 			setStatus(Status.PENDING);
-			searchTweets(debouncedSearchTerm).then((results) => {
+			searchTweets(`?q=${debouncedSearchTerm}&result_type=popular&count=5`).then((results) => {
+				const statuses = results.statuses.map((result: any) => result);
 				setStatus(Status.RESOLVED);
+				// console.log(results, statuses);
 
-				const hashtags: Array<string> = results
+				const hashtags: Array<string> = statuses
 					.flatMap((result: any) => result.entities.hashtags)
 					.map((hashtag: HashtagModel) => hashtag.text);
-				// console.log(JSON.stringify(results[0], null, 4));
-				setTweets(results);
+				// console.log(JSON.stringify(results, null, 4));
+
+				setTweets(statuses);
+				setMetaData(results.search_metadata);
+
 				setHashtags(hashtags);
 			});
 		} else {
@@ -62,7 +96,7 @@ function App() {
 							<Hashtag {...{ hashtag }} />
 						))}
 					</div>
-					<Feed {...{ tweets, status }} />
+					<Feed {...{ tweets, status, onLoadMore }} />
 				</div>
 				<div className="column is-hidden-mobile">
 					<div className="box ">
