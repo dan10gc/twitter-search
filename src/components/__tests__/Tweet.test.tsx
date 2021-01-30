@@ -5,7 +5,7 @@ import { Status } from '../../types';
 
 const onLoadMoreMock = jest.fn();
 
-const emptyTweetsArr: Array<any> = [];
+let emptyTweetsArr: Array<any> = [];
 // Ideally we move this to __mocks__
 const mockTweet = {
 	entities: { hashtags: [{ text: 'Messi', indices: [75, 101] }] },
