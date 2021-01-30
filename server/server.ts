@@ -1,12 +1,9 @@
 
-import express, { Request, Response } from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import morgan from 'morgan'
 import { config } from 'dotenv'
 import cors from 'cors'
 import fetch from 'node-fetch'
-// const config = require('dotenv').config()
-// const cors = require('cors');
-// const nodefetch = require('node-fetch')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -31,13 +28,13 @@ app.get('/tweets', async (req: Request, res: Response) => {
   res.json(json)
 })
 
-function notFound(req: Request, res: Response, next: any) {
+function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
   const error = new Error('Not Found');
   next(error)
 }
 
-function errorHandler(error: any, req: Request, res: Response, next: any) {
+function errorHandler(error: Error, req: Request, res: Response, next: NextFunction) {
   res.status(res.statusCode || 500);
   res.json({ message: error.message })
 }

@@ -40,7 +40,7 @@
     "development": "NODE_ENV=development concurrently --kill-others \"yarn run client\" \"yarn run server\"",
     "production": "yarn run build && NODE_ENV=production yarn run server",
     "client": "react-scripts start",
-    "server": "nodemon --project tsconfig.server.json --exec ts-node server/server.ts",
+    "server": "nodemon --project server/tsconfig.json --exec ts-node server/server.ts",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
