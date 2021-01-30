@@ -73,6 +73,20 @@
     "@types/node-fetch": "^2.5.8",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "husky": "^4.3.8",
+    "lint-staged": ">=10",
+    "prettier": "^2.2.1",
     "ts-node-dev": "^1.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,scss,css,md}": [
+      "prettier --check",
+      "jest --bail --findRelatedTests"
+    ]
   }
 }
