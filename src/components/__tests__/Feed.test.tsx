@@ -5,7 +5,7 @@ import { MetaDataModel, Status } from '../../types';
 
 const onLoadMoreMock = jest.fn();
 
-const emptyTweetsArr: Array<any> = [];
+// let emptyTweetsArr: Array<any> = [];
 const mockTweets: Array<any> = [
 	{
 		entities: { hashtags: [] },
@@ -65,7 +65,7 @@ describe('Feed Component', () => {
 	test('renders idleMessage', () => {
 		const { container, getByText } = render(
 			<Feed
-				tweets={emptyTweetsArr}
+				tweets={[]}
 				status={Status.IDLE}
 				onLoadMore={onLoadMoreMock}
 				paginationStatus={Status.IDLE}
@@ -78,7 +78,7 @@ describe('Feed Component', () => {
 	test('renders noResultsMessage', () => {
 		const { container, getByText } = render(
 			<Feed
-				tweets={emptyTweetsArr}
+				tweets={[]}
 				status={Status.RESOLVED}
 				onLoadMore={onLoadMoreMock}
 				paginationStatus={Status.IDLE}
