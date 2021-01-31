@@ -42,7 +42,7 @@
 		"client": "react-scripts start",
 		"server": "nodemon --project server/tsconfig.json --exec ts-node server/server.ts",
 		"build": "react-scripts build",
-		"test": "jest test",
+		"test": "jest",
 		"eject": "react-scripts eject",
 		"format": "prettier --write \"**/*.ts\" \"server/**/*.ts\" \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.css\" "
 	},
